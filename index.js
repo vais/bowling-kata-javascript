@@ -1,15 +1,19 @@
-module.exports = function score(rolls) {
-  if (rolls.length === 0) {
-    return 0;
+const score = ([first, second, third, ...rest]) => {
+  if (first === 10 && second !== undefined && third !== undefined) {
+    return first + second + third + score([second, third, ...rest]);
   }
 
-  if (rolls[0] + rolls[1] === 10) {
-    return rolls[0] + rolls[1] + rolls[2] + score(rolls.slice(2));
+  if (first + second === 10) {
+    return first + second + third + score([third, ...rest]);
   }
 
-  if (rolls[0] === 10) {
-    return rolls[0] + rolls[1] + rolls[2] + score(rolls.slice(1));
+  if (first + second < 10) {
+    return first + second + score([third, ...rest]);
   }
 
-  return rolls[0] + score(rolls.slice(1));
+  return 0;
+};
+
+module.exports = {
+  score,
 };

@@ -1,5 +1,5 @@
 const assert = require('assert').strict;
-const score = require('./index.js');
+const { score } = require('./index.js');
 
 describe('Bowling Game', () => {
   let expected;
@@ -45,6 +45,17 @@ describe('Bowling Game', () => {
     });
 
     it('scores 24', () => {
+      assert.equal(actual, expected);
+    });
+  });
+
+  context('perfect game', () => {
+    beforeEach(() => {
+      expected = 300;
+      actual = score(Array(12).fill(10));
+    });
+
+    it('scores 300', () => {
       assert.equal(actual, expected);
     });
   });
