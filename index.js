@@ -14,6 +14,19 @@ const score = ([first, second, third, ...rest]) => {
   return 0;
 };
 
+const parse = (string) =>
+  [...string].map((character, currentIndex, characters) => {
+    switch (character) {
+      case 'X':
+        return 10;
+      case '/':
+        return 10 - parseInt(characters[currentIndex - 1]);
+      default:
+        return parseInt(character);
+    }
+  });
+
 module.exports = {
   score,
+  parse,
 };

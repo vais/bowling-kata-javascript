@@ -1,5 +1,5 @@
 const assert = require('assert').strict;
-const { score } = require('./index.js');
+const { score, parse } = require('./index.js');
 
 describe('Bowling Game', () => {
   let expected;
@@ -57,6 +57,21 @@ describe('Bowling Game', () => {
 
     it('scores 300', () => {
       assert.equal(actual, expected);
+    });
+  });
+
+  context('parsing string input', () => {
+    beforeEach(() => {
+      expected = [1, 6, 5, 5, 2, 5, 1, 9, 10, 2, 8, 7, 1, 10, 10, 1, 9, 7];
+      actual = parse('165/251/X2/71XX1/7');
+    });
+
+    it('transforms a string into an array of numbers', () => {
+      assert.deepEqual(actual, expected);
+    });
+
+    it('scores 149', () => {
+      assert.equal(score(actual), 149);
     });
   });
 });
