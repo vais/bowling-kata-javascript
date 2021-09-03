@@ -26,4 +26,15 @@ describe('Bowling Game', () => {
       assert.equal(actual, expected);
     });
   });
+
+  context('one spare', () => {
+    beforeEach(() => {
+      expected = 16;
+      actual = score([5, 5, 3, ...Array(17).fill(0)]);
+    });
+
+    it('scores 16', () => {
+      assert.equal(actual, expected);
+    });
+  });
 });
