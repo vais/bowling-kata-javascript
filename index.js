@@ -1,3 +1,7 @@
-module.exports = function score() {
-  return 0;
+module.exports = function score(rolls) {
+  if (rolls.length === 0) {
+    return 0;
+  }
+
+  return rolls[0] + score(rolls.slice(1));
 };

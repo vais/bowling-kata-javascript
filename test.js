@@ -15,4 +15,15 @@ describe('Bowling Game', () => {
       assert.equal(actual, expected);
     });
   });
+
+  context('all ones', () => {
+    beforeEach(() => {
+      expected = 20;
+      actual = score(Array(20).fill(1));
+    });
+
+    it('scores 20', () => {
+      assert.equal(actual, expected);
+    });
+  });
 });
