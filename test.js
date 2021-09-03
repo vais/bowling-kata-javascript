@@ -37,4 +37,15 @@ describe('Bowling Game', () => {
       assert.equal(actual, expected);
     });
   });
+
+  context('one strike', () => {
+    beforeEach(() => {
+      expected = 24;
+      actual = score([10, 3, 4, ...Array(16).fill(0)]);
+    });
+
+    it('scores 24', () => {
+      assert.equal(actual, expected);
+    });
+  });
 });

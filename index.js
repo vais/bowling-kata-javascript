@@ -7,5 +7,9 @@ module.exports = function score(rolls) {
     return rolls[0] + rolls[1] + rolls[2] + score(rolls.slice(2));
   }
 
+  if (rolls[0] === 10) {
+    return rolls[0] + rolls[1] + rolls[2] + score(rolls.slice(1));
+  }
+
   return rolls[0] + score(rolls.slice(1));
 };
